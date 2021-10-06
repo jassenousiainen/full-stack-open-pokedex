@@ -35,3 +35,4 @@ jobs:
           heroku_email: "jasse.nousiainen@gmail.com"
           healthcheck: "https://fast-cove-79483.herokuapp.com/health"
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
