@@ -33,3 +33,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fast-cove-79483"
           heroku_email: "jasse.nousiainen@gmail.com"
+          healthcheck: "https://fast-cove-79483.herokuapp.com/health"
+          checkstring: "ok"
