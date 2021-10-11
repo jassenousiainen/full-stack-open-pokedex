@@ -30,7 +30,7 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
-      - if: ${{ github.event_name == 'push' }} && ${{ !contains(join(github.event.commits.*.message), '#skip') }}
+      - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
@@ -40,7 +40,7 @@ jobs:
           healthcheck: "https://fast-cove-79483.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
-      - if: ${{ github.event_name == 'push' }} && ${{ !contains(join(github.event.commits.*.message), '#skip') }}
+      - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.33.0
         env:
