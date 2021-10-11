@@ -40,3 +40,9 @@ jobs:
           healthcheck: "https://fast-cove-79483.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - if: ${{ github.event_name == 'push' }}
+        name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
