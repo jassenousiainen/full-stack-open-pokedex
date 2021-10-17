@@ -62,3 +62,4 @@ jobs:
           message: |
             GitHub Actions failed on ${{ github.event_name }} to ${{ github.repository }}.
             Commit ${{ github.sha }} by ${{ github.actor }}.
+            Took ${{ job.steps.timeout-minutes }} min.
