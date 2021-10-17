@@ -46,10 +46,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-      - name: Telegram Notification
+      - if: ${{ job.status == 'success' }}
+        name: Telegram success notification
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          if: ${{ job.status == 'success' }}
-            args: A new version deployed to https://fast-cove-79483.herokuapp.com/
+          args: A new version deployed to https://fast-cove-79483.herokuapp.com/
+      - if: ${{ job.status == 'failure' }}
+        name: Telegram failure notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
