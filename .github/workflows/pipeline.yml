@@ -59,3 +59,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            GitHub Actions failed on ${{ github.event_name }} to ${{ github.repository }}.
+            Commit ${{ github.sha }} by ${{ github.actor }}.
