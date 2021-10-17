@@ -62,3 +62,12 @@ jobs:
           message: |
             GitHub Actions failed on ${{ github.event_name }} to ${{ github.repository }}.
             Commit ${{ github.sha }} by ${{ github.actor }}.
+      - if: ${{ always() }}
+        name: Telegram message to me
+          uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO_ME }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              GitHub Actions ${{ job.status }} on ${{ github.repository }}, triggered by ${{ github.event_name }}.
+              Commit ${{ github.sha }} by ${{ github.actor }}.
