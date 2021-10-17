@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '12.x'
       - name: npm install
-        run: exit 1
+        run: npm install
       - name: lint
         run: npm run eslint
       - name: build
@@ -62,4 +62,3 @@ jobs:
           message: |
             GitHub Actions failed on ${{ github.event_name }} to ${{ github.repository }}.
             Commit ${{ github.sha }} by ${{ github.actor }}.
-            Took ${{ job.steps.timeout-minutes }} min.
