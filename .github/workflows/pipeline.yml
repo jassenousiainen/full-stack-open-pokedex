@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: '12.x'
       - name: npm install
-        run: npm install
+        run: exit 1
       - name: lint
         run: npm run eslint
       - name: build
-        run: npm run fail
+        run: npm run build
       - name: test
         run: npm run test
       - name: e2e tests
@@ -53,7 +53,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           args: A new version deployed to https://fast-cove-79483.herokuapp.com/
-      - if: ${{ job.status == 'failure' }}
+      - if: ${{ failure() }}
         name: Telegram failure notification
         uses: appleboy/telegram-action@master
         with:
