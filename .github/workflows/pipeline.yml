@@ -51,4 +51,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: The ${{ github.event_name }} event triggered first step.
+          if: ${{ job.status == 'success' }}
+            args: A new version deployed to https://fast-cove-79483.herokuapp.com/
