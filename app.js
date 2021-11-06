@@ -12,6 +12,10 @@ app.get('/version', (req, res) => {
   res.send('1') // change this string to ensure a new version deployed
 })
 
+app.get('/', (req, res) => {
+  res.send(404)
+})
+
 app.use(express.static('dist'))
 
 app.listen(PORT, () => {
